@@ -4,82 +4,52 @@
     margin: 0;
 }
 
-body {
-    background-color: beige;
-    display: flex;
-    margin: 0;
-    justify-content: center;
-    align-items: center;
-
-}
-.container {
-    background-color: cadetblue;
-   width: 500px;
-}
-.container button {
-    margin-top: 2em;
-
-}
-.header {
-    background-color: rgba(210, 105, 30, 0.267);
-    text-align: center;
-}
 form {
-    padding: 30px;
+    width: 300px;
+    margin: 20vh auto 0 auto;
+    padding: 20px;
+    background-color: whitesmoke;
+    border-radius: 4px;
+    font-size: 12px;
 }
-.form-control {
-    margin-bottom: 10px;
-    padding-bottom: 10px;
-    position: relative;
+form h1 {
+    color: #0f2027;
+    text-align: center;
+    margin-bottom: 16px;
 }
-.form-control label {
-    display: inline-block;
-    margin-bottom: 5px;
-}
-.form-control input {
-    border: 2px solid rgb(51, 51, 51);
-    display: block;
-    font-size: 16px;
+form button {
+    padding: 10px;
+    margin-top: 16px;
     width: 100%;
+    background-color: rgb(41, 57, 194);
+    border: none;
+    border-radius: 4px;
+}
+.input-control {
+    display: flex;
+    flex-direction: column;
 }
 
-.form-control.success input {
-    border-color:green ;
-}
-.form-control.error input {
-    border-color:red ;
-}
-
-
-.form-control i {
-    right: 10px;
-   top: 25px;
-   position: absolute;
-   visibility: hidden;
-}
-.form-control.success i.fa-check-circle {
-    color: green;
-    visibility: visible;
-}
-.form-control.error i.fa-exclamation{
-    color: red;
-    visibility: visible;
-}
-
-
-.form-control small {
-    position: absolute;
-   visibility: hidden;
-}
-
-.form-control.error small {
-    visibility: visible;
-    color: red;
-}
-.form button {
-    background-color: rgba(210, 105, 30, 0.267);
-    width: 100%;
-    height: 2em;
+.input-control input{
+    border: 2px solid #f0f0f0;
+    border-radius: 4px;
     display: block;
-    font-size: 16px;
+    font-size: 12px;
+    padding: 10px;
+    width: 100%;
+
+}
+.input-control input:focus {
+    outline: 0;
+}
+.input-control.success input {
+    border-color: #09c372;
+}
+.input-control.error input {
+    border-color: #ff3860;
+}
+.input-control .error {
+    color: #ff3860;
+    font-size: 9px;
+    height: 13px;
 }
