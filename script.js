@@ -1,58 +1,57 @@
-const form = document.getElementById('form')
-const firstName = document.getElementById('firstName')
-const lastName = document.getElementById('lastName')
-const email = document.getElementById('email')
-const userArray = ['']
-const userNumber = Math.floor((Math.random()*1000)+1)
-console.log(userNumber)
+const regForm = document.querySelector('#regForm');
+const email = document.querySelector('#email')
 
-form.addEventListener('submit',(e) => {
+const validate = (id) => {
+let input = document.querySelector(id)
+if(input.value === '' || input.value.lenght < 2) {
+    input.classList.remove('is-valid')
+    input.classList.add('is-invalid')
+    input.focus()
+    return false;
+    } else {
+        input.classList.remove('is-invalid')
+        input.classList.add('is-valid')
+        return true;
+    }
+}
+       
+const validateEmail = (emailInput) => {
+let regEx = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
+if (regEx.test(emailInput.value)) {
+    emailInput.classList.add('is-valid')
+    emailInput.classList.remove('is-invalid')
+    return true;
+} 
+else {
+    emailInput.classList.remove('is-valid')
+    emailInput.classList.add('is-invalid');
+    emailInput.focus();
+    return false;
+}
+}
+
+regForm.addEventListener('submit',e => {
     e.preventDefault();
 
-    checkInputs();
+    const users = []
+    
+    for(let i = 0; i < e.currentTarget.length;i++) {
+        if(e.currentTarget[i].type === "text") {
+            validate('#' + e.currentTarget[i].id);
+            users[i] = validate('#' + e.currentTarget[i].id)
+        }
+        else if(e.currentTarget[i].type === "email") {
+            validateEmail(email);
+            users[i] = validateEmail(email)
+        }
+    }
 
+if(users.includes(false)) {
+    console.log(' ')
+} else {
+    console.log('Lyckad inloggning')
+    
+}
 })
 
-function checkInputs() {
-    const firstNameValue = firstName.value.trim()
-    const lastNameValue = lastName.value.trim()
-    const emailValue= email.value.trim()
-
-    if (firstName.value === '') {
-        
-        setErrorFor(firstName,'kan inte vara blankt')
-    }else {
-        
-        setSuccessFor(firstName);
-    }
-    if(lastNameValue === '') {
-        setErrorFor(lastName,'kan inte vara blankt')
-    } else {
-        setSuccessFor(lastName)
-    }
-    if(emailValue ==='') {
-        setErrorFor(email, 'Ange en epost')
-    } else if (!validEmail(emailValue))
-    setErrorFor(email, 'Ange en giltig epost')
-
-    else {
-        setSuccessFor(email)
-    }
-} 
-function setErrorFor(input,message) {
-    const formControl = input.parentElement;
-    const small = formControl.querySelector('small');
-
-    small.innerText = message;
-
-    formControl.className = 'form-control error';
-}
-
-function setSuccessFor (input) {
-    const formControl = input.parentElement;
-    formControl.className = 'form-control success';
-}
-function validEmail (email) {
-    return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
-}
 
