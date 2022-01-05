@@ -1,57 +1,107 @@
-const regForm = document.querySelector('#regForm');
+const form = document.querySelector('#form')
+const firstName = document.querySelector('#firstName')
+const lastName = document.querySelector('#lastName')
 const email = document.querySelector('#email')
+const userArray = []
+form.addEventListener('submit',(e) => {
+    e.preventDefault()
 
-const validate = (id) => {
-let input = document.querySelector(id)
-if(input.value === '' || input.value.lenght < 2) {
-    input.classList.remove('is-valid')
-    input.classList.add('is-invalid')
-    input.focus()
-    return false;
-    } else {
-        input.classList.remove('is-invalid')
-        input.classList.add('is-valid')
-        return true;
-    }
-}
-       
-const validateEmail = (emailInput) => {
-let regEx = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
-if (regEx.test(emailInput.value)) {
-    emailInput.classList.add('is-valid')
-    emailInput.classList.remove('is-invalid')
-    return true;
-} 
-else {
-    emailInput.classList.remove('is-valid')
-    emailInput.classList.add('is-invalid');
-    emailInput.focus();
-    return false;
-}
-}
+    // checkinputs();
 
-regForm.addEventListener('submit',e => {
-    e.preventDefault();
 
-    const users = []
-    
-    for(let i = 0; i < e.currentTarget.length;i++) {
-        if(e.currentTarget[i].type === "text") {
-            validate('#' + e.currentTarget[i].id);
-            users[i] = validate('#' + e.currentTarget[i].id)
+    validateText(firstName)
+    validateText(lastName)
+    validateEmail(email)
+
+    if(
+        validateText(firstName) &&
+        validateText(lastName) && 
+        validateEmail(email)
+    ) {
+        const user = {
+            firstName: firstName.value,
+            lastName: lastName.value,
+            email: email.value
         }
-        else if(e.currentTarget[i].type === "email") {
-            validateEmail(email);
-            users[i] = validateEmail(email)
-        }
-    }
 
-if(users.includes(false)) {
-    console.log(' ')
-} else {
-    console.log('Lyckad inloggning')
-    
-}
+        console.log(user)
+    }
 })
 
+const validateText = (input) => {
 
+    if(input.value.trim() === '') {
+        setErrorFor(input,'Kan inte vara tomt')
+        return false
+    } else {
+        setSuccessFor(input)
+       return true;
+    }
+}
+const validateEmail = (input) => {
+    if(input.value.trim() === '') {
+        setErrorFor(input,'Ange en epost')
+        return false
+        
+    } else if (!isEmail(input.value.trim())){
+        setErrorFor(input,'Ange en giltig epost')
+        return false
+        
+    } else {
+        setSuccessFor(email)
+        return true
+        
+    }
+}
+
+function checkinputs() {
+    const firstNameValue = firstName.value.trim();
+    const lastNameValue = lastName.value.trim();
+    const emailValue = email.value.trim();
+
+    if(firstNameValue === '') {
+        setErrorFor(firstName,'Kan inte vara tomt')
+        
+    } else {
+        setSuccessFor(firstName)
+       return true;
+    }
+
+    if(lastNameValue === '') {
+        setErrorFor(lastName,'Kan inte vara tomt')
+       
+    } else {
+        setSuccessFor(lastName)
+        
+    }
+    if(emailValue === '') {
+        setErrorFor(email,'Ange en epost')
+        
+    } else if (!isEmail(emailValue)){
+        setErrorFor(email,'Ange en giltig epost')
+        
+    } else {
+        setSuccessFor(email)
+        
+    }
+
+
+
+
+}
+
+function setErrorFor(input,message) {
+    const formControl = input.parentElement;
+    const small = formControl.querySelector('small')
+
+    small.innerText = message;
+    formControl.className = 'form-control error';
+}
+function setSuccessFor(input) {
+    const formControl = input.parentElement;
+    formControl.className  = 'form-control success';
+}
+
+function isEmail(email) {
+    return /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)
+}

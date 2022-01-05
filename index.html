@@ -4,61 +4,58 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JavaScript - 1 </title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Javascript</title>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="styles.css">
 
-    <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-    <header class="bg-info py-2 text-center">
-        <h1>Registrera</h1>
-    </header>
+    
+<div class="container">
+ <div class="header">
+     <h2>Skapa Konto</h2>
+ </div>
+<form  class="form" id="form">
 
-<div class="container mt-3">
-<form id="regForm">
-<div class="row">
-    <div class="mb-3 col-md-6">
-        <input type="text" class="form-control" placeholder="Förnamn..." id="firstName">
-        <div class="invalid-feedback">
-            Var god ange ett förnamn
-        </div>
-        <div class="valid-feedback">
-            
-        </div>
-    </div>
-    <div class="mb-3 col-md-6">
-        <input type="text" class="form-control " placeholder="Efternamn..." id="lastName">
-        <div class="invalid-feedback">
-            Var god ange ett efternamn
-        </div>
-        <div class="valid-feedback">
-            
-        </div>
-    </div>
-    <div class="mb-3 col-md-12">
-        <input type="email" class="form-control " placeholder="epost..." id="email">
-        <div class="invalid-feedback">
-            Ange en giltig  epost
-        </div>
-        <div class="valid-feedback">
-            
-        </div>
-    </div>
-            <div class="mb-3 col-md-12">
-                <button id="btn-Submit" class="btn btn-info">Registrera Dig</button>
-            </div>
+<div class="form-control  ">
+    <label for="firstName">Förnamn</label>
+    <input type="text" placeholder="Förnamn..." id="firstName">
+    <i class="fas fa-check-circle"></i>
+    <i class="fas fa-exclamation-circle"></i>
+    <small>Ange ett förnamn</small>
+
 </div>
+<div class="form-control ">
+    <label for="lastName">Efternamn</label>
+    <input type="text" placeholder="Efternamn..." id="lastName">
+    <i class="fas fa-check-circle"></i>
+    <i class="fas fa-exclamation-circle"></i>
+    <small>Ange ett efternamn</small>
 
-
-</form>
-<div><h4></h4><p></p></div>
+</div>
+<div class="form-control">
+    <label for="email">Email</label>
+    <input type="text" placeholder="Email..." id="email">
+    <i class="fas fa-check-circle"></i>
+    <i class="fas fa-exclamation-circle"></i>
+    <small>Ange en giltig email</small>
 
 </div>
 
 
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="./script.js"></script>
+
+
+<button>Skicka</button>
+
+    </form>
+</div>
+<div class="userInfo">
+    <p>Förnamn Efternamn</p>
+    <p>Email</p>
+</div>
+
+    <script src="script.js"></script>
 </body>
 </html>
