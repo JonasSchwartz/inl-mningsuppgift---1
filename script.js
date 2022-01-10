@@ -3,32 +3,7 @@ const firstName = document.querySelector('#firstName')
 const lastName = document.querySelector('#lastName')
 const email = document.querySelector('#email')
 
-form.addEventListener('submit',(e) => {
-    e.preventDefault()
 
-    // checkinputs();
-
-
-    validateText(firstName)
-    validateText(lastName)
-    validateEmail(email)
-
-    if( validateText(firstName) &&
-        validateText(lastName) && 
-        validateEmail(email))
-         
-        { const user = {
-            
-            firstName: firstName.value,
-            lastName: lastName.value,
-            email: email.value
-        }
-        console.log('Lyckades')
-   
-    } else {
-        console.log('error')
-    }
-})
 
 const validateText = (input) => {
 
@@ -103,3 +78,37 @@ function setSuccessFor(input) {
 function isEmail(email) {
     return /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)
 }
+form.addEventListener('submit',(e) => {
+    e.preventDefault()
+
+    
+
+
+    validateText(firstName)
+    validateText(lastName)
+    validateEmail(email)
+
+    if( validateText(firstName) &&
+        validateText(lastName) && 
+        validateEmail(email))
+         
+        { const user = {
+            
+            firstName: firstName.value,
+            lastName: lastName.value,
+            email: email.value
+        }
+        console.log('Lyckad inloggning')
+        document.getElementById("user").innerHTML = `${firstName.value} ${lastName.value}<br>${email.value}`;
+      
+      
+
+
+
+      
+    } else {
+        document.getElementById("user").innerHTML = `Inloggninen misslyckades`;
+      
+        console.log('lyckades ej')
+    }
+})
