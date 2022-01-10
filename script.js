@@ -2,7 +2,7 @@ const form = document.querySelector('#form')
 const firstName = document.querySelector('#firstName')
 const lastName = document.querySelector('#lastName')
 const email = document.querySelector('#email')
-const userArray = []
+
 form.addEventListener('submit',(e) => {
     e.preventDefault()
 
@@ -13,18 +13,20 @@ form.addEventListener('submit',(e) => {
     validateText(lastName)
     validateEmail(email)
 
-    if(
-        validateText(firstName) &&
+    if( validateText(firstName) &&
         validateText(lastName) && 
-        validateEmail(email)
-    ) {
-        const user = {
+        validateEmail(email))
+         
+        { const user = {
+            
             firstName: firstName.value,
             lastName: lastName.value,
             email: email.value
         }
-
-        console.log(user)
+        console.log('Lyckades')
+   
+    } else {
+        console.log('error')
     }
 })
 
@@ -84,10 +86,6 @@ function checkinputs() {
         setSuccessFor(email)
         
     }
-
-
-
-
 }
 
 function setErrorFor(input,message) {
