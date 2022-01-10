@@ -98,8 +98,9 @@ form.addEventListener('submit',(e) => {
             lastName: lastName.value,
             email: email.value
         }
-        console.log('Lyckad inloggning')
-        document.getElementById("user").innerHTML = `${firstName.value} ${lastName.value}<br>${email.value}`;
+       
+        
+        document.getElementById("user").innerHTML = `${firstName.value} ${lastName.value}<br><p class="small-text">${email.value}</p>`;
       
       
 
@@ -107,8 +108,8 @@ form.addEventListener('submit',(e) => {
 
       
     } else {
-        document.getElementById("user").innerHTML = `Inloggninen misslyckades`;
+        document.getElementById("user").innerHTML = `Inloggningen misslyckades`;
       
-        console.log('lyckades ej')
+        
     }
 })

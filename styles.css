@@ -121,3 +121,6 @@ body {
 #user {
     margin-left: 16px;
 }
+.small-text {
+    font-size: .8rem;
+}
