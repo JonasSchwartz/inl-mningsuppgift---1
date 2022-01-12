@@ -2,7 +2,7 @@ const form = document.querySelector('#form')
 const firstName = document.querySelector('#firstName')
 const lastName = document.querySelector('#lastName')
 const email = document.querySelector('#email')
-
+const userArray = []
 
 
 const validateText = (input) => {
@@ -99,15 +99,10 @@ form.addEventListener('submit',(e) => {
             email: email.value
         }
        
-        
-        document.getElementById("user").innerHTML = `${firstName.value} ${lastName.value}<br><p class="small-text">${email.value}</p>`;
-      
-      
-
-
-
-      
-    } else {
+        userArray.push(user)
+        document.getElementById("user").innerHTML = `${user.firstName} ${user.lastName}<br><p class="small-text">${user.email}</p>`;
+      console.log(userArray)
+        } else {
         document.getElementById("user").innerHTML = `Inloggningen misslyckades`;
       
         
