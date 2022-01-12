@@ -117,9 +117,15 @@ body {
     cursor: pointer;
     font-weight: bold;
 }
-
+.bold {
+    font-weight: bold;
+}
 #user {
-    margin-left: 16px;
+    margin-left: 4em;
+    
+}
+#user p {
+    margin-bottom: 10px;
 }
 .small-text {
     font-size: .8rem;
