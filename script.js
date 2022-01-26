@@ -101,12 +101,13 @@ form.addEventListener('submit',(e) => {
        
         userArray.push(user)
         document.getElementById("user").innerHTML += `${user.firstName} ${user.lastName}<br><p class="small-text">${user.email}</p>`;
-        console.log(userArray)
+        firstName.value = ''
+        lastName.value = ''
+        email.value = ''
 
       
-        } else {
-        document.getElementById("user").innerHTML = `Inloggningen misslyckades`;
+        } 
       
         
-    }
+    
 })
